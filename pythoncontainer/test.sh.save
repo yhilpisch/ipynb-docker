@@ -1,0 +1,3 @@
+#!bin/bash/
+
+-v /home/thomas/workspace/project1/:/usr/local/nginx/html:ro

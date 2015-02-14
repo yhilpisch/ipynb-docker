@@ -1,0 +1,5 @@
+.bashrc
+.bash_logout
+.profile
+*.pyc
+*.db

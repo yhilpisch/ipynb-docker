@@ -1,0 +1,17 @@
+FROM pythoncontainer
+
+MAINTAINER yves
+
+VOLUME /notebooks
+WORKDIR /notebooks
+
+# ADD notebook.sh /
+
+# RUN chmod u+x
+
+ENV PORT 8888
+
+VOLUME /notebooks
+WORKDIR /notebooks
+
+CMD ["/bin/bash", "ipython notebook --no-browser --port $PORT --ip=* --pylab nbagg"]
