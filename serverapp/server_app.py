@@ -23,19 +23,17 @@ app.config.update(dict(
 	SQLALCHEMY_DATABASE_URI='sqlite:///subscriber.db',
 	DEBUG=False,))
 
-if app.config['DEBUG']:
+if app.config['DEBUG'] is True:
     app.config.update(dict(
         SQLALCHEMY_DATABASE_URI='sqlite:///debug.db'))
 
-else:
-    app.config.update(dict(
-        SQLALCHEMY_DATABASE_URI='sqlite:///subscriber.db'))
+#else:
+#    app.config.update(dict(
+#        SQLALCHEMY_DATABASE_URI='sqlite:///subscriber.db'))
 
 # Database Class
 
 db = SQLAlchemy(app)
-
-db.create_all()
 
 class Subscriber(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -52,6 +50,8 @@ class Subscriber(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.last_name
+
+db.create_all()
 
 port = 9000  # initial value
 
