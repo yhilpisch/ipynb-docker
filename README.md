@@ -1,11 +1,10 @@
-# ipynb-docker
-IPython Notebook Servers in Docker Containers
+# IPython Notebook Servers in Docker Containers
 
-This repository contains all ingredients to run a **Flask Web application** that starts multiple **Docker containers which in turn run different IPython Notebook servers** (cf. http://ipython.org).
+This repository contains all ingredients to run a **Python Flask Web application** that starts multiple **Docker containers which in turn run different IPython Notebook servers** (cf. http://ipython.org).
 
-You can see the **application** in action under http://docker.quant-platform.com.
+You can see the **application in action** under http://docker.quant-platform.com.
 
-Note, however, that this app runs on the smallest ***DigitalOcean droplet** (cf. https://www.digitalocean.com/?refcode=fbe512dd3dac). When setting up such a droplet it is recommended to use the latest version of **Ubuntu**.
+Note, however, that this app runs on the smallest **DigitalOcean droplet** (cf. https://www.digitalocean.com/?refcode=fbe512dd3dac). When setting up such a droplet it is recommended to use the latest version of **Ubuntu** in combination with **Docker** (cf. http://docker.com).
 
 In addition, when setting up an environment make sure to have Python, Flask, Flask-WTF and Flask-SQLAlchemy installed. Best you install **Anaconda** first (cf. http://continuum.io/downloads) and do then:
 
@@ -23,7 +22,7 @@ git clone https://github.com/yhilpisch/ipynb-docker
 
 ## Docker Containers
 
-In order to run the Python Flask application on a server, you have to **first build two Docker containers**.
+In order to run the Python Flask Web application on a server, you have to **first build two Docker containers**.
 
 The first one is a basic **Ubuntu** container with some **Python** in it (assuming you are in the repo folder):
 
@@ -49,7 +48,6 @@ Now go the the directory of the app and start the app:
 cd ../serverapp
 python run_app.py &
 ```
-
 
 Your app should now be reachable under ```http://your-ip-address:8888```.
 
