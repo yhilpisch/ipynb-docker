@@ -20,11 +20,11 @@
   <form action="{{ url_for('main') }}" method=post
    enctype="multipart/form-data">
     <dl>
-      <dd><h1>Fire up your own IPython Notebook server.</h1></dd><br>
+      <dd><h1>Fire up your own, temporary Jupyter Notebook server.</h1></dd><br>
 
       <dd>This whole page is for illustration only.<br>
-	You can easily start your own notebook server in a Docker container.<br>
-	  The service might be shut down at any time.<br>
+	You can easily start your own Jupyter server in a Docker container.<br>
+	  However, the service might be shut down at any time.<br>
 	Files, data, notebooks, etc. then get lost.</dd><br><br>
 
        {% if error %}

@@ -66,22 +66,22 @@ def main():
     error = None
     form = Registration(csrf_enabled=False)
     if request.method == 'POST' and form.validate():
-	#try:
-    	subscriber = Subscriber(request.form['first_name'],
+	try:
+    	    subscriber = Subscriber(request.form['first_name'],
                                     request.form['last_name'],
                                     request.form['email'])
-    	db.session.add(subscriber)
-    	db.session.commit()
-    	return redirect(url_for('server', first_name=request.form['first_name']))
-        #except:
-        #    error = 'Error writing to database.'
+    	    db.session.add(subscriber)
+    	    db.session.commit()
+    	    return redirect(url_for('server', first_name=request.form['first_name']))
+        except:
+            error = 'Error writing to database.'
     return render_template('registration.html', form=form, error=error)
 
 @app.route("/server/<first_name>")
 def server(first_name):
     global port
     port += 1
-    os.system("sudo docker run -d -t -e 'PORT=%d' -p %d:%d -m 128m ipyserver" 
+    os.system("sudo docker run -d -t -e 'PORT=%d' -p %d:%d -m 128m jupserver" 
 			% (port, port, port))
     return render_template('server.html', first_name=first_name, port=port)
 

@@ -12,6 +12,8 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get upgrade -y
 apt-get install -y aria2
+apt-get install -y git
+apt-get install -y python-pip
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -29,3 +31,4 @@ conda install pandas
 conda install pytables
 conda install bcolz
 conda install blaze
+conda install jsonschema
