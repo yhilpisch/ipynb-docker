@@ -1,4 +1,4 @@
-# IPython Notebook Servers in Docker Containers
+# Jupyter & IPython Notebook Servers in Docker Containers
 
 This repository contains all ingredients to run a **Python Flask Web application** that starts multiple **Docker containers which in turn run different IPython Notebook servers** (cf. http://ipython.org).
 
@@ -32,12 +32,23 @@ docker build -t pythoncontainer .
 ```
 
 
-The second, which relies on the first, adds the **Notebook Server functionality**.
+The second, which relies on the first, adds the **Notebook Server functionality**. Built it via
+
+```
+cd ../jupserver
+docker build -t jupserver
+```
+
+for Jupyter (IPython 3.0)
+
+or
 
 ```
 cd ../ipyserver
 docker build -t ipyserver
 ```
+
+for IPython Notebook.
 
 
 ## Flask Web app

@@ -27,10 +27,6 @@ if app.config['DEBUG'] is True:
     app.config.update(dict(
         SQLALCHEMY_DATABASE_URI='sqlite:///debug.db'))
 
-#else:
-#    app.config.update(dict(
-#        SQLALCHEMY_DATABASE_URI='sqlite:///subscriber.db'))
-
 # Database Class
 
 db = SQLAlchemy(app)
@@ -41,12 +37,14 @@ class Subscriber(db.Model):
     first_name = db.Column(db.String(80), unique=False)
     last_name = db.Column(db.String(80), unique=False)
     email = db.Column(db.String(120), unique=False)
+    port = db.Column(db.Integer, unique=False)
 
-    def __init__(self, first_name, last_name, email):
+    def __init__(self, first_name, last_name, email, port):
         self.datetime = dt.datetime.now()
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
+        self.port = port
 
     def __repr__(self):
         return '<User %r>' % self.last_name
@@ -63,13 +61,16 @@ def page_not_found(e):
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
+    global port
+    port += 1
     error = None
     form = Registration(csrf_enabled=False)
     if request.method == 'POST' and form.validate():
 	try:
     	    subscriber = Subscriber(request.form['first_name'],
                                     request.form['last_name'],
-                                    request.form['email'])
+                                    request.form['email'],
+                                    port)
     	    db.session.add(subscriber)
     	    db.session.commit()
     	    return redirect(url_for('server', first_name=request.form['first_name']))
@@ -80,7 +81,6 @@ def main():
 @app.route("/server/<first_name>")
 def server(first_name):
     global port
-    port += 1
     os.system("sudo docker run -d -t -e 'PORT=%d' -p %d:%d -m 128m jupserver" 
 			% (port, port, port))
     return render_template('server.html', first_name=first_name, port=port)
