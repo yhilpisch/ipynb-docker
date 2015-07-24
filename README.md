@@ -36,20 +36,10 @@ The second, which relies on the first, adds the **Notebook Server functionality*
 
 ```
 cd ../jupserver
-docker build -t jupserver
+docker build -t jupserver .
 ```
 
-for Jupyter (IPython 3.0)
-
-or
-
-```
-cd ../ipyserver
-docker build -t ipyserver
-```
-
-for IPython Notebook.
-
+for Jupyter Notebook.
 
 ## Flask Web app
 
@@ -71,16 +61,16 @@ The code of this repository is BSD licensed (cf. http://opensource.org/licenses/
 The code in this repository comes with no representations or warranties, to the extent
 permitted by applicable law.
 
-http://www.pythonquants.com \| analytics@pythonquants.com \|
+http://tpq.io \| team@tpq.io \|
 http://twitter.com/dyjh
 
 **Python Quant Platform** \| http://quant-platform.com
 
 **Derivatives Analytics with Python (Wiley Finance)** \|
-http://eu.wiley.com/WileyCDA/WileyTitle/productCd-1119037999.html
+http://derivatives-analytics-with-python.com
 
 **Python for Finance (O'Reilly)** \|
-http://shop.oreilly.com/product/0636920032441.do
+http://python-for-finance.com
 
 
 

@@ -15,14 +15,9 @@ WORKDIR /notebooks
 
 ENV PORT 8888
 
-ADD install.sh /
-RUN chmod u+x /install.sh
-
 ADD notebook.sh /
 RUN chmod u+x /notebook.sh
 
-RUN /install.sh
-
-ADD Interactive_Widgets_Jupyter.ipynb /notebooks/
+ADD /ipynbs/* /notebooks/
 
 CMD /notebook.sh PORT
