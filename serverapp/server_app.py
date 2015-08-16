@@ -10,6 +10,7 @@
 import os
 import string
 import random
+from IPython.lib import passwd
 import datetime as dt
 from flask import Flask, request, render_template, redirect, url_for
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -87,9 +88,10 @@ def server(first_name):
     global port
     pw = ''
     for i in range(8):
-        pw += random.choice(charset
-    os.system("sudo docker run -d -t -e 'PORT=%d' -e 'PW=%s' -p %d:%d -m 128m jupserver" 
-			% (port, pw, port, port))
+        pw += random.choice(charset)
+    pws = passwd(pw)
+    os.system("sudo docker run -d -t -e 'PW=%s' -e 'PORT=%d' -p %d:%d -m 128m jupserver" 
+			% (pws, port, port, port))
     return render_template('server.html', first_name=first_name, port=port, pw=pw)
 
 

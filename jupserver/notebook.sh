@@ -7,10 +7,12 @@
 # The Python Quants GmbH
 # 
 
+PW = expr $1
+PORT = expr $2
 
-PORT = expr $1
-PW = expr $2
+echo -n $PW | awk '{print "c.NotebookApp.password = '\''" $1 "'\''"}' >> /root/.ipython/profile_default/ipython_notebook_config.py
 
-echo -n $PW | sha1sum | awk '{print "c.NotebookApp.password = '\''sh1:" $1 "'\''"}' >> ipython_notebook_config.py /root/.ipython/profile_default/
+export PATH="/root/anaconda/bin:$PATH"
 
 ipython notebook --no-browser --port $PORT --ip=*
+
