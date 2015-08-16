@@ -8,10 +8,14 @@
 # The Python Quants GmbH
 #
 import os
+import string
+import random
 import datetime as dt
 from flask import Flask, request, render_template, redirect, url_for
 from flask.ext.sqlalchemy import SQLAlchemy
 from forms import Registration
+
+charset = string.uppercase + string.lowercase + string.punctuation
 
 app = Flask(__name__)
 app.secret_key = '\xb6\xa5hA\x01{\x0f\xd6su\xeb\xd6:4\x13u^O\x15f\xe3\xaf*\xde'
@@ -81,9 +85,12 @@ def main():
 @app.route("/server/<first_name>")
 def server(first_name):
     global port
-    os.system("sudo docker run -d -t -e 'PORT=%d' -p %d:%d -m 128m jupserver" 
-			% (port, port, port))
-    return render_template('server.html', first_name=first_name, port=port)
+    pw = ''
+    for i in range(8):
+        pw += random.choice(charset
+    os.system("sudo docker run -d -t -e 'PORT=%d' -e 'PW=%s' -p %d:%d -m 128m jupserver" 
+			% (port, pw, port, port))
+    return render_template('server.html', first_name=first_name, port=port, pw=pw)
 
 
 if __name__ == '__main__':
