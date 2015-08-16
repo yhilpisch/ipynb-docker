@@ -1,8 +1,10 @@
 # Jupyter & IPython Notebook Servers in Docker Containers
 
-This repository contains all ingredients to run a **Python Flask Web application** that starts multiple **Docker containers which in turn run different IPython Notebook servers** (cf. http://ipython.org).
+This repository contains all ingredients to run a **Python Flask Web application** that starts multiple **Docker containers which in turn run a Jupyter Notebook server** using SSL encryption and password protection (cf. http://ipython.org).
 
 You can see the **application in action** under http://docker.quant-platform.com.
+
+![Jupyter Notebook](http://hilpisch.com/jupyter_docker.png "Jupyter Notebook")
 
 Note, however, that this app runs on the smallest **DigitalOcean droplet** (cf. https://www.digitalocean.com/?refcode=fbe512dd3dac). When setting up such a droplet it is recommended to use the latest version of **Ubuntu** in combination with **Docker** (cf. http://docker.com).
 
