@@ -66,6 +66,8 @@ def page_not_found(e):
 
 @app.route("/", methods=['GET', 'POST'])
 def main():
+    with open('time_logging.log', 'a') as f:
+        f.write(str(dt.datetime.now()) + '\n')
     global port
     port += 1
     error = None
